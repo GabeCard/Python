@@ -1,0 +1,53 @@
+"""Programa que lê o número do funcionário, o número de horas
+trabalhadas mensais, o valor que recebe por hora e o número de filhos com idade
+menor de 14 anos. Calcula e escreve o salário deste funcionário, sendo que cada
+filho menor de 14 anos acrescenta 10% do salário.
+Para 1 funcionário o programa dá o valor do salário do mesmo.
+Para mais de 1 funcionário o programa da o valor gasto pela empresa para pagar os funcionários.
+Programa pede o mês e o ano de entrada."""
+
+# Pedindo mês de entrada
+print("qual mês?")
+mês = input()
+
+# Pedindo ano de entrada
+print("qual ano?")
+ano = input()
+
+# Entrega da data de cálculo
+print(f'Cálculo de {mês} de {ano}')
+
+print("Digite o total de horas mensais:")
+hm = int(input())
+
+print("Digite o número de funcionários:")
+nf = int(input())
+
+print("Digite o número de horas trabalhadas:")
+ht = int(input())
+
+print("Digite o valor por hora: ")
+valor = int(input())
+
+print("Digite o número de filhos < 14:")
+filho = int(input())
+
+if nf == 1: # Numero de funcionários menor que 2, usa um cálculo individual
+    salario = hm * valor
+
+elif nf > 1: # Sendo maior ou igual a 2, usa um cálculo coletivo
+    salario = nf * hm * valor
+
+elif nf < 1:
+    print('Não existem funcionários')
+    salario = ('inxistente')
+
+if filho >= 1:  #Tendo 1 ou mais filhos, tem um aumento no salário
+    salario = salario + salario * 0.1 * filho
+
+if ht > hm: # Acrescenta hora extra caso o funcionário tenha trabalhado mais que a hora indicada
+    htotal = ht - hm
+    preco = htotal * valor * 0.25
+    salario = salario + preco
+
+print(f'O salário final é de valor {salario}')
